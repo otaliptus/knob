@@ -42,6 +42,20 @@ knob.app
 open knob.app
 ```
 
+## Install
+
+Download the latest release from:
+
+```text
+https://github.com/otaliptus/knob/releases
+```
+
+Or install with Homebrew:
+
+```sh
+brew install --cask otaliptus/tap/knob
+```
+
 To start it automatically after login, add `knob.app` in:
 
 ```text
@@ -51,3 +65,5 @@ System Settings -> General -> Login Items
 ## Notes
 
 This is intentionally small. It is not trying to replace BetterDisplay, Lunar, or MonitorControl. It is just a neat little volume knob for one external monitor.
+
+The first release is signed with an Apple Distribution certificate, but not notarized yet. A future release should use a Developer ID Application certificate plus Apple notarization.
