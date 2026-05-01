@@ -1,0 +1,11 @@
+.DS_Store
+*.swp
+
+# Build output
+*.app
+Resources/AppIcon.iconset/
+
+# Xcode / Swift local state
+.build/
+DerivedData/
+*.xcuserdata/
