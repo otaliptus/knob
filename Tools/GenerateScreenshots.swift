@@ -140,39 +140,46 @@ func drawMenuBarBadge(x: CGFloat, y: CGFloat) {
     text("40", at: NSPoint(x: x + 19, y: y + 1.2), size: 12, weight: .semibold, color: .white)
 }
 
-func drawDropdown(origin: NSPoint, width: CGFloat = 260) {
-    let rect = NSRect(x: origin.x, y: origin.y, width: width, height: 202)
-    roundedRect(rect, radius: 12, color: NSColor(calibratedWhite: 0.08, alpha: 0.88))
-    NSColor.white.withAlphaComponent(0.13).setStroke()
+func drawDropdown(origin: NSPoint, width: CGFloat = 223) {
+    let rect = NSRect(x: origin.x, y: origin.y, width: width, height: 223)
+    roundedRect(rect, radius: 10, color: NSColor(calibratedWhite: 0.18, alpha: 0.74))
+    let glow = NSGradient(colors: [
+        NSColor(calibratedRed: 0.96, green: 0.38, blue: 0.24, alpha: 0.14),
+        NSColor(calibratedRed: 0.16, green: 0.35, blue: 0.70, alpha: 0.08),
+        NSColor.clear
+    ])!
+    glow.draw(in: rect.insetBy(dx: 10, dy: 18), angle: 0)
+    NSColor.white.withAlphaComponent(0.15).setStroke()
     let outline = NSBezierPath(roundedRect: rect.insetBy(dx: 0.5, dy: 0.5), xRadius: 12, yRadius: 12)
     outline.lineWidth = 1
     outline.stroke()
 
-    text("PL3494WQ", at: NSPoint(x: origin.x + 16, y: origin.y + 172), size: 13, weight: .semibold, color: .white.withAlphaComponent(0.72))
+    text("PL3494WQ", at: NSPoint(x: origin.x + 10, y: origin.y + 199), size: 12, weight: .semibold, color: .white.withAlphaComponent(0.32))
 
-    let sliderY = origin.y + 143
-    roundedRect(NSRect(x: origin.x + 16, y: sliderY, width: 204, height: 4), radius: 2, color: .white.withAlphaComponent(0.2))
-    roundedRect(NSRect(x: origin.x + 16, y: sliderY, width: 82, height: 4), radius: 2, color: .white.withAlphaComponent(0.48))
-    roundedRect(NSRect(x: origin.x + 91, y: sliderY - 5.5, width: 15, height: 15), radius: 7.5, color: .white)
+    let sliderY = origin.y + 166
+    roundedRect(NSRect(x: origin.x + 8, y: sliderY, width: width - 18, height: 6), radius: 3, color: .white.withAlphaComponent(0.22))
+    roundedRect(NSRect(x: origin.x + 8, y: sliderY, width: 86, height: 6), radius: 3, color: .white.withAlphaComponent(0.46))
+    roundedRect(NSRect(x: origin.x + 82, y: sliderY - 6.5, width: 19, height: 19), radius: 9.5, color: .white)
 
-    text("Volume: 40", at: NSPoint(x: origin.x + 16, y: origin.y + 112), size: 13, weight: .regular, color: .white.withAlphaComponent(0.72))
+    text("Volume: 40", at: NSPoint(x: origin.x + 10, y: origin.y + 132), size: 12, weight: .regular, color: .white.withAlphaComponent(0.38))
 
-    let buttonY = origin.y + 70
+    let buttonY = origin.y + 104
     let buttonSymbols = ["speaker.slash.fill", "speaker.minus.fill", "speaker.plus.fill", "arrow.clockwise"]
     for (index, name) in buttonSymbols.enumerated() {
-        let x = origin.x + 16 + CGFloat(index) * 55
-        roundedRect(NSRect(x: x, y: buttonY, width: 44, height: 30), radius: 7, color: .white.withAlphaComponent(0.13))
-        symbol(name, in: NSRect(x: x + 12, y: buttonY + 7, width: 20, height: 16), color: .white.withAlphaComponent(0.94))
+        let x = origin.x + 8 + CGFloat(index) * 55
+        roundedRect(NSRect(x: x, y: buttonY, width: 45, height: 28), radius: 14, color: .white.withAlphaComponent(0.14))
+        symbol(name, in: NSRect(x: x + 14, y: buttonY + 7, width: 17, height: 14), color: .white.withAlphaComponent(0.80))
     }
 
     NSColor.white.withAlphaComponent(0.16).setStroke()
     let divider = NSBezierPath()
-    divider.move(to: NSPoint(x: origin.x + 16, y: origin.y + 54))
-    divider.line(to: NSPoint(x: origin.x + width - 16, y: origin.y + 54))
+    divider.move(to: NSPoint(x: origin.x + 8, y: origin.y + 90))
+    divider.line(to: NSPoint(x: origin.x + width - 13, y: origin.y + 90))
     divider.stroke()
 
-    text("Ready", at: NSPoint(x: origin.x + 16, y: origin.y + 30), size: 12, color: .white.withAlphaComponent(0.45))
-    text("Quit", at: NSPoint(x: origin.x + 16, y: origin.y + 10), size: 12, color: .white.withAlphaComponent(0.82))
+    text("Ready", at: NSPoint(x: origin.x + 10, y: origin.y + 66), size: 12, color: .white.withAlphaComponent(0.36))
+    text("Quit", at: NSPoint(x: origin.x + 10, y: origin.y + 41), size: 12, weight: .semibold, color: .white.withAlphaComponent(0.82))
+    text("⌘ Q", at: NSPoint(x: origin.x + width - 34, y: origin.y + 41), size: 10, color: .white.withAlphaComponent(0.42))
 }
 
 let hero = try withBitmap(width: 880, height: 420) { width, height in
@@ -192,16 +199,16 @@ let hero = try withBitmap(width: 880, height: 420) { width, height in
     symbol("moon.fill", in: NSRect(x: width - 170, y: height - 22, width: 15, height: 15), color: .white.withAlphaComponent(0.86))
     text("16:04", at: NSPoint(x: width - 128, y: height - 22), size: 13, weight: .medium, color: .white.withAlphaComponent(0.86))
 
-    drawDropdown(origin: NSPoint(x: width - 356, y: height - 247), width: 260)
+    drawDropdown(origin: NSPoint(x: width - 315, y: height - 250), width: 223)
 
     text("knob", at: NSPoint(x: 58, y: 74), size: 30, weight: .bold, color: .white.withAlphaComponent(0.94))
     text("Monitor volume, back in the menu bar.", at: NSPoint(x: 60, y: 51), size: 14, color: .white.withAlphaComponent(0.64))
 }
 try write(hero, to: "knob-hero.png")
 
-let menu = try withBitmap(width: 360, height: 260) { width, height in
+let menu = try withBitmap(width: 223, height: 223) { width, height in
     NSColor(calibratedRed: 0.16, green: 0.25, blue: 0.32, alpha: 1).setFill()
     NSRect(x: 0, y: 0, width: width, height: height).fill()
-    drawDropdown(origin: NSPoint(x: 50, y: 28), width: 260)
+    drawDropdown(origin: NSPoint(x: 0, y: 0), width: 223)
 }
 try write(menu, to: "knob-menu.png")
