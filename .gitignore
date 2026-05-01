@@ -3,6 +3,7 @@
 
 # Build output
 *.app
+dist/
 Resources/AppIcon.iconset/
 
 # Xcode / Swift local state
