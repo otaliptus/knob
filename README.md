@@ -1,5 +1,7 @@
 # knob
 
+![knob menu bar screenshot](assets/screenshots/knob-hero.png)
+
 `knob` is a tiny macOS menu bar app for changing the speaker volume on an external monitor when macOS refuses to show a volume slider for it.
 
 It was made because an iiyama `PL3494WQ` monitor exposed audio over DisplayPort, but macOS would not let the monitor volume be adjusted from Sound settings. The monitor did support DDC/CI volume control, so `knob` puts that control back where it belongs: in the menu bar.
@@ -7,6 +9,8 @@ It was made because an iiyama `PL3494WQ` monitor exposed audio over DisplayPort,
 Built in about ten minutes with GPT-5.5 medium.
 
 ## What it does
+
+![knob dropdown](assets/screenshots/knob-menu.png)
 
 - Shows a small display icon plus the current monitor volume in the macOS menu bar.
 - Opens a compact menu with a slider.
